@@ -144,7 +144,24 @@ fun CountdownTimerView(
 @Preview("Light Theme CountDown Timer", widthDp = 360, heightDp = 640)
 @Composable
 fun LightPreviewCountDownTimerView() {
-    MyTheme {
+    MyTheme(
+        darkTheme = false,
+    ) {
+        CountdownTimerView(
+            INITIAL_START_MILLIS,
+            CountdownState.PAUSED,
+            {},
+            {},
+        )
+    }
+}
+
+@Preview("Dark Theme CountDown Timer", widthDp = 360, heightDp = 640)
+@Composable
+fun DarkPreviewCountDownTimerView() {
+    MyTheme(
+        darkTheme = true,
+    ) {
         CountdownTimerView(
             INITIAL_START_MILLIS,
             CountdownState.PAUSED,
