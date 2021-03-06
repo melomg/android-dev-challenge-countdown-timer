@@ -98,49 +98,36 @@ fun CountdownTimerView(
                 )
             }
 
-            when (countdownState) {
-                CountdownState.STARTED -> {
-                    Button(
-                        shape = CircleShape,
-                        onClick = {
+            Button(
+                shape = CircleShape,
+                onClick = {
+                    when (countdownState) {
+                        CountdownState.STARTED -> {
                             onTimerPause()
-                        },
-                        modifier = Modifier
-                            .size(60.dp)
-                            .shadow(elevation = 8.dp, shape = CircleShape),
-                    ) {
+                        }
+                        CountdownState.PAUSED, CountdownState.FINISHED -> {
+                            onTimerStart()
+                        }
+                    }
+                },
+                modifier = Modifier
+                    .size(60.dp)
+                    .shadow(elevation = 8.dp, shape = CircleShape),
+            ) {
+                when (countdownState) {
+                    CountdownState.STARTED -> {
                         Image(
                             painter = painterResource(R.drawable.ic_pause),
                             contentDescription = "Pause"
                         )
                     }
-                }
-                CountdownState.PAUSED -> {
-                    Button(
-                        shape = CircleShape,
-                        onClick = {
-                            onTimerStart()
-                        },
-                        modifier = Modifier
-                            .size(60.dp)
-                            .shadow(elevation = 8.dp, shape = CircleShape),
-                    ) {
+                    CountdownState.PAUSED -> {
                         Image(
                             painter = painterResource(R.drawable.ic_play),
                             contentDescription = "Play",
                         )
                     }
-                }
-                CountdownState.FINISHED -> {
-                    Button(
-                        shape = CircleShape,
-                        onClick = {
-                            onTimerStart()
-                        },
-                        modifier = Modifier
-                            .size(60.dp)
-                            .shadow(elevation = 8.dp, shape = CircleShape),
-                    ) {
+                    CountdownState.FINISHED -> {
                         Image(
                             painter = painterResource(R.drawable.ic_replay),
                             contentDescription = "RePlay",
