@@ -21,7 +21,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-const val INITIAL_START_MILLIS = 1 * 60 * 60 * 1_000L
+const val INITIAL_START_MILLIS = 10 * 1_000L
 
 class CountdownTimerViewModel : ViewModel() {
 
