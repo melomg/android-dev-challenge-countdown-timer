@@ -118,19 +118,19 @@ fun CountdownTimerView(
                     CountdownState.STARTED -> {
                         Image(
                             painter = painterResource(R.drawable.ic_pause),
-                            contentDescription = "Pause"
+                            contentDescription = stringResource(R.string.pause),
                         )
                     }
                     CountdownState.PAUSED -> {
                         Image(
                             painter = painterResource(R.drawable.ic_play),
-                            contentDescription = "Play",
+                            contentDescription = stringResource(R.string.play),
                         )
                     }
                     CountdownState.FINISHED -> {
                         Image(
                             painter = painterResource(R.drawable.ic_replay),
-                            contentDescription = "RePlay",
+                            contentDescription = stringResource(R.string.re_play),
                         )
                     }
                 }

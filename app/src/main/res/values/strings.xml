@@ -12,4 +12,7 @@
     <string name="app_name">AndroidDevChallenge</string>
     <string name="start_timer">Start Timer</string>
     <string name="timer_separator">:</string>
+    <string name="pause">Pause</string>
+    <string name="play">Play</string>
+    <string name="re_play">RePlay</string>
 </resources>
