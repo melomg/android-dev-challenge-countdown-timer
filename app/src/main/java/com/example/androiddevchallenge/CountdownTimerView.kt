@@ -166,7 +166,7 @@ fun CountdownTimerView(
                         }
                 ) {
                     Text(
-                        text = "Reset",
+                        text = stringResource(R.string.reset),
                         style = typography.button,
                         modifier = Modifier
                             .padding(5.dp)
