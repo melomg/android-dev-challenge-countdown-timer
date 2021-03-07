@@ -51,6 +51,7 @@ fun MyApp() {
         CountdownTimerView(
             startTimeInMillis.value,
             countdownState.value,
+            viewModel.shouldShowReset,
             onTimerStart = {
                 viewModel.updateCountdownState(CountdownState.STARTED)
                 Log.d("melo", "onTimerStart: update CountdownState as STARTED ") // TODO remove this
@@ -58,6 +59,9 @@ fun MyApp() {
             onTimerPause = {
                 viewModel.updateCountdownState(CountdownState.PAUSED)
                 Log.d("melo", "onTimerStart: update CountdownState as PAUSED ") // TODO remove this
+            },
+            onTimerReset = {
+                viewModel.resetCountdownTimer()
             },
         )
     }

@@ -23,9 +23,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
+import androidx.compose.material.TextButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -48,8 +50,10 @@ import kotlin.time.ExperimentalTime
 fun CountdownTimerView(
     startTimeInMillis: Long,
     countdownState: CountdownState,
+    shouldShowReset: Boolean,
     onTimerStart: () -> Unit,
     onTimerPause: () -> Unit,
+    onTimerReset: () -> Unit,
 ) {
     Surface(
         color = MaterialTheme.colors.surface,
@@ -96,6 +100,21 @@ fun CountdownTimerView(
                     style = typography.h3,
                     textAlign = TextAlign.Center,
                 )
+            }
+
+            if (shouldShowReset) {
+                TextButton(
+                    onClick = {
+                        onTimerReset()
+                    },
+                ) {
+                    Text(
+                        text = "Reset",
+                        style = typography.button,
+                        modifier = Modifier
+                            .padding(5.dp)
+                    )
+                }
             }
 
             Button(
@@ -148,8 +167,10 @@ fun LightPreviewCountDownTimerView() {
         darkTheme = false,
     ) {
         CountdownTimerView(
-            INITIAL_START_MILLIS,
-            CountdownState.PAUSED,
+            startTimeInMillis = INITIAL_START_MILLIS,
+            countdownState = CountdownState.PAUSED,
+            shouldShowReset = true,
+            {},
             {},
             {},
         )
@@ -163,8 +184,10 @@ fun DarkPreviewCountDownTimerView() {
         darkTheme = true,
     ) {
         CountdownTimerView(
-            INITIAL_START_MILLIS,
-            CountdownState.PAUSED,
+            startTimeInMillis = INITIAL_START_MILLIS,
+            countdownState = CountdownState.PAUSED,
+            shouldShowReset = true,
+            {},
             {},
             {},
         )

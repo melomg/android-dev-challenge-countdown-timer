@@ -37,6 +37,9 @@ class CountdownTimerViewModel : ViewModel() {
 
     private var countdownTimer: CountDownTimer? = null
 
+    val shouldShowReset: Boolean
+        get() = (startTimeInMillis.value != INITIAL_START_MILLIS)
+
     fun updateStartTimeInMillis(timeInMillis: Long) {
         _startTimeInMillis.value = timeInMillis
     }
@@ -64,5 +67,11 @@ class CountdownTimerViewModel : ViewModel() {
             }
         }
         _countdownState.value = countdownState
+    }
+
+    fun resetCountdownTimer() {
+        countdownTimer?.cancel()
+        _startTimeInMillis.value = INITIAL_START_MILLIS
+        _countdownState.value = CountdownState.PAUSED
     }
 }

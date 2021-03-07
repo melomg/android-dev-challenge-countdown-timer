@@ -107,9 +107,9 @@ val typography = Typography(
     ),
     button = TextStyle(
         fontFamily = montserrat,
-        fontSize = 14.sp,
+        fontSize = 16.sp,
         fontWeight = FontWeight.SemiBold,
-        lineHeight = 16.sp,
+        lineHeight = 18.sp,
         letterSpacing = 1.25.sp
     ),
     caption = TextStyle(
