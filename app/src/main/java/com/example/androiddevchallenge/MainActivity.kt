@@ -16,7 +16,6 @@
 package com.example.androiddevchallenge
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
@@ -54,15 +53,11 @@ fun MyApp() {
             viewModel.shouldShowReset,
             onTimerStart = {
                 viewModel.updateCountdownState(CountdownState.STARTED)
-                Log.d("melo", "onTimerStart: update CountdownState as STARTED ") // TODO remove this
             },
             onTimerPause = {
                 viewModel.updateCountdownState(CountdownState.PAUSED)
-                Log.d("melo", "onTimerStart: update CountdownState as PAUSED ") // TODO remove this
             },
-            onTimerReset = {
-                viewModel.resetCountdownTimer()
-            },
+            onTimerReset = viewModel::resetCountdownTimer,
         )
     }
 }

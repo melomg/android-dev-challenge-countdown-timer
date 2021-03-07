@@ -16,7 +16,6 @@
 package com.example.androiddevchallenge
 
 import android.os.CountDownTimer
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -56,11 +55,9 @@ class CountdownTimerViewModel : ViewModel() {
                     },
                 )
                 countdownTimer?.start()
-                Log.d("melo", "onTimerStart: countdownTimer started $countdownTimer") // TODO remove this
             }
             CountdownState.PAUSED -> {
                 countdownTimer?.cancel()
-                Log.d("melo", "onTimerStart: countdownTimer cancelled $countdownTimer") // TODO remove this
             }
             CountdownState.FINISHED -> {
                 updateStartTimeInMillis(INITIAL_START_MILLIS)

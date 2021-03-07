@@ -16,7 +16,6 @@
 package com.example.androiddevchallenge
 
 import android.os.CountDownTimer
-import android.util.Log
 
 private const val UPDATE_INTERVAL_MILLIS = 1_000L
 
@@ -28,11 +27,9 @@ internal class OneSecondCountdownTimer(
 
     override fun onTick(millisUntilFinished: Long) {
         updateTime(millisUntilFinished)
-        Log.d("melo", "CountDownTimer$this: updateTime $millisUntilFinished") // TODO remove this
     }
 
     override fun onFinish() {
         finishTime()
-        Log.d("melo", "CountDownTimer$this: onFinish") // TODO remove this
     }
 }
