@@ -38,7 +38,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.mapper.toCountTimeHolder
+import com.example.androiddevchallenge.mapper.toTimeHolder
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.typography
 import kotlin.time.ExperimentalTime
@@ -62,7 +62,7 @@ fun CountdownTimerView(
                 .fillMaxHeight(),
         ) {
             val timerSeparator = stringResource(id = R.string.timer_separator)
-            val (hours, minutes, seconds) = toCountTimeHolder(startTimeInMillis)
+            val (hours, minutes, seconds) = toTimeHolder(startTimeInMillis)
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,

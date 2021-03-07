@@ -17,7 +17,7 @@ package com.example.androiddevchallenge.mapper
 
 import com.example.androiddevchallenge.TimeHolder
 
-internal fun toCountTimeHolder(startTimeInMillis: Long): TimeHolder {
+internal fun toTimeHolder(startTimeInMillis: Long): TimeHolder {
     val remainingSeconds = startTimeInMillis / 1000
     var seconds = 0
     var minutes = 0
