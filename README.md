@@ -7,12 +7,12 @@
 
 ## :scroll: Description
 <!--- Describe your app in one or two sentences -->
-This project is for 2nd week of the #AndroidDevChallenge of 2021 which demonstrates a simple countdown timer.
+This project is for the 2nd week of the #AndroidDevChallenge of 2021 which demonstrates a simple countdown timer.
 
 
 ## :bulb: Motivation and Context
 <!--- Optionally point readers to interesting parts of your submission. -->
-- Usage of StateFlow, ConstraintLayout, fonts
+- Usage of StateFlow, ConstraintLayout, fonts, Material Design
 <!--- What are you especially proud of? -->
 - I didn't know much about Jetpack Compose, only it was coming, till these challenges. I spent my most of time reading docs and following codelabs but still I was able to complete the challenge in the short amount of time.     
 
