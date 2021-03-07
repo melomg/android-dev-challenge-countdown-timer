@@ -16,8 +16,6 @@
 package com.example.androiddevchallenge
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -27,12 +25,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
-import androidx.compose.material.TextButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
@@ -40,6 +37,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.androiddevchallenge.mapper.toTimeHolder
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.typography
@@ -58,22 +56,23 @@ fun CountdownTimerView(
     Surface(
         color = MaterialTheme.colors.surface,
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
+        ConstraintLayout(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(),
+                .fillMaxHeight()
         ) {
             val timerSeparator = stringResource(id = R.string.timer_separator)
             val (hours, minutes, seconds) = toTimeHolder(startTimeInMillis)
+            val (countDownTimerTexts, countdownTimerReset, countdownStatesButton, spacer) = createRefs()
 
             Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
+                    .constrainAs(countDownTimerTexts) {
+                        top.linkTo(parent.top)
+                        bottom.linkTo(parent.bottom)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    }
             ) {
                 Text(
                     text = hours,
@@ -102,20 +101,13 @@ fun CountdownTimerView(
                 )
             }
 
-            if (shouldShowReset) {
-                TextButton(
-                    onClick = {
-                        onTimerReset()
-                    },
-                ) {
-                    Text(
-                        text = "Reset",
-                        style = typography.button,
-                        modifier = Modifier
-                            .padding(5.dp)
-                    )
-                }
-            }
+            Spacer(
+                modifier = Modifier
+                    .height(24.dp)
+                    .constrainAs(spacer) {
+                        bottom.linkTo(parent.bottom)
+                    }
+            )
 
             Button(
                 shape = CircleShape,
@@ -131,7 +123,12 @@ fun CountdownTimerView(
                 },
                 modifier = Modifier
                     .size(60.dp)
-                    .shadow(elevation = 8.dp, shape = CircleShape),
+                    .shadow(elevation = 8.dp, shape = CircleShape)
+                    .constrainAs(countdownStatesButton) {
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                        bottom.linkTo(spacer.top)
+                    }
             ) {
                 when (countdownState) {
                     CountdownState.STARTED -> {
@@ -155,7 +152,27 @@ fun CountdownTimerView(
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            if (shouldShowReset) {
+                TextButton(
+                    onClick = {
+                        onTimerReset()
+                    },
+                    modifier = Modifier
+                        .constrainAs(countdownTimerReset) {
+                            start.linkTo(countdownStatesButton.end)
+                            end.linkTo(parent.end)
+                            top.linkTo(countdownStatesButton.top)
+                            bottom.linkTo(countdownStatesButton.bottom)
+                        }
+                ) {
+                    Text(
+                        text = "Reset",
+                        style = typography.button,
+                        modifier = Modifier
+                            .padding(5.dp)
+                    )
+                }
+            }
         }
     }
 }
