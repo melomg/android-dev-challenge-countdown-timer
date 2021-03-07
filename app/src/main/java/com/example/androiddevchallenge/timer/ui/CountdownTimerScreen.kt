@@ -39,9 +39,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.timer.mapper.toTimeHolder
 import com.example.androiddevchallenge.timer.CountdownState
 import com.example.androiddevchallenge.timer.INITIAL_START_MILLIS
+import com.example.androiddevchallenge.timer.mapper.toTimeHolder
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.typography
 import kotlin.time.ExperimentalTime
