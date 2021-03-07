@@ -25,9 +25,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.ui.timer.CountdownTimerView
 import com.example.androiddevchallenge.ui.timer.CountdownTimerViewModel
 import com.example.androiddevchallenge.ui.timer.model.CountdownState
-import com.example.androiddevchallenge.ui.timer.ui.CountdownTimerView
 import kotlin.time.ExperimentalTime
 
 class MainActivity : AppCompatActivity() {
