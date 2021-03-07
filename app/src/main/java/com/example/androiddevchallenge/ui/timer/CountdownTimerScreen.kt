@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.timer.ui
+package com.example.androiddevchallenge.ui.timer.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -42,11 +42,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.timer.CountdownState
-import com.example.androiddevchallenge.timer.INITIAL_START_MILLIS
-import com.example.androiddevchallenge.timer.mapper.toTimeHolder
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.typography
+import com.example.androiddevchallenge.ui.timer.INITIAL_START_MILLIS
+import com.example.androiddevchallenge.ui.timer.mapper.toTimeHolder
+import com.example.androiddevchallenge.ui.timer.model.CountdownState
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -166,7 +166,8 @@ fun CountdownTimerView(
                         end.linkTo(parent.end)
                         top.linkTo(countdownStatesButton.top)
                         bottom.linkTo(countdownStatesButton.bottom)
-                    }) {
+                    }
+            ) {
                 TextButton(
                     onClick = {
                         onTimerReset()

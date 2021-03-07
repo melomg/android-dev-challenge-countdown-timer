@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.timer
+package com.example.androiddevchallenge.ui.timer
 
 import android.os.CountDownTimer
 import androidx.lifecycle.ViewModel
-import com.example.androiddevchallenge.timer.ui.OneSecondCountdownTimer
+import com.example.androiddevchallenge.ui.timer.model.CountdownState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

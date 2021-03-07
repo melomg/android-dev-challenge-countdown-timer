@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.timer.mapper
+package com.example.androiddevchallenge.ui.timer.mapper
 
-import com.example.androiddevchallenge.timer.TimeUIModel
+import com.example.androiddevchallenge.ui.timer.model.TimeUIModel
 
 internal fun toTimeHolder(startTimeInMillis: Long): TimeUIModel {
     val remainingSeconds = startTimeInMillis / 1000
