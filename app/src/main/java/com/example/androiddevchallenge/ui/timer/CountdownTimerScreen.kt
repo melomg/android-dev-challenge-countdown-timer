@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.timer.ui
+package com.example.androiddevchallenge.ui.timer
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -28,11 +29,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
@@ -44,8 +47,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.typography
-import com.example.androiddevchallenge.ui.timer.INITIAL_START_MILLIS
-import com.example.androiddevchallenge.ui.timer.mapper.toTimeHolder
+import com.example.androiddevchallenge.ui.timer.mapper.toTimeUIModel
 import com.example.androiddevchallenge.ui.timer.model.CountdownState
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -67,11 +69,29 @@ fun CountdownTimerView(
                 .fillMaxHeight()
         ) {
             val timerSeparator = stringResource(id = R.string.timer_separator)
-            val (hours, minutes, seconds) = toTimeHolder(startTimeInMillis)
-            val (countDownTimerTexts, countdownTimerReset, countdownStatesButton, spacer) = createRefs()
+            val (hours, minutes, seconds, progress) = toTimeUIModel(startTimeInMillis)
+            val (countDownTimerTexts, progressIndicator, spacer, countdownStatesButton, countdownTimerReset) = createRefs()
+
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .size(390.dp)
+                    .padding(28.dp)
+                    .fillMaxWidth()
+                    .constrainAs(progressIndicator) {
+                        top.linkTo(parent.top)
+                        bottom.linkTo(parent.bottom)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    },
+                progress = progress,
+                color = MaterialTheme.colors.primary,
+            )
 
             Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
+                    .padding(50.dp)
                     .constrainAs(countDownTimerTexts) {
                         top.linkTo(parent.top)
                         bottom.linkTo(parent.bottom)

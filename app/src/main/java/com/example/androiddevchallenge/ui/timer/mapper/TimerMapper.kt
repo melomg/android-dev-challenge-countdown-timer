@@ -15,13 +15,18 @@
  */
 package com.example.androiddevchallenge.ui.timer.mapper
 
+import com.example.androiddevchallenge.ui.timer.INITIAL_START_MILLIS
 import com.example.androiddevchallenge.ui.timer.model.TimeUIModel
+import kotlin.math.floor
 
-internal fun toTimeHolder(startTimeInMillis: Long): TimeUIModel {
+internal fun toTimeUIModel(startTimeInMillis: Long): TimeUIModel {
     val remainingSeconds = startTimeInMillis / 1000
+    val initialSeconds = INITIAL_START_MILLIS / 1000
     var seconds = 0
     var minutes = 0
     var hours = 0
+
+    val progress = (floor(remainingSeconds.toDouble()) / initialSeconds).toFloat()
 
     if (remainingSeconds > 0) {
         val secondsDay = remainingSeconds % (24 * 60 * 60)
@@ -33,7 +38,8 @@ internal fun toTimeHolder(startTimeInMillis: Long): TimeUIModel {
     return TimeUIModel(
         formatTime(hours),
         formatTime(minutes),
-        formatTime(seconds)
+        formatTime(seconds),
+        progress,
     )
 }
 

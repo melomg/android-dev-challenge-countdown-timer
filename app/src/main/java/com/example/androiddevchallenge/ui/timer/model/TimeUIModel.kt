@@ -15,4 +15,9 @@
  */
 package com.example.androiddevchallenge.ui.timer.model
 
-data class TimeUIModel(val hours: String, val minutes: String, val seconds: String)
+data class TimeUIModel(
+    val hours: String,
+    val minutes: String,
+    val seconds: String,
+    val progress: Float,
+)
