@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge.ui.timer.model
 
-import androidx.compose.ui.graphics.Color
-
-val blue200 = Color(0xFF8AB4F8)
-val blue500 = Color(0xFF5785C5)
-val blue700 = Color(0xFF000051)
-val teal200 = Color(0xFFF8CE8a)
+enum class CountdownState {
+    STARTED,
+    PAUSED,
+    FINISHED
+}

@@ -17,27 +17,113 @@ package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.androiddevchallenge.R
 
 // Set of Material typography styles to start with
+
+private val montserrat = FontFamily(
+    Font(R.font.montserrat_light, FontWeight.Light),
+    Font(R.font.montserrat_regular, FontWeight.Normal),
+    Font(R.font.montserrat_medium, FontWeight.Medium),
+    Font(R.font.montserrat_semibold, FontWeight.SemiBold)
+)
+
+private val karla = FontFamily(
+    Font(R.font.karla_regular, FontWeight.Normal),
+    Font(R.font.karla_bold, FontWeight.Bold)
+)
+
 val typography = Typography(
+    h1 = TextStyle(
+        fontFamily = montserrat,
+        fontSize = 96.sp,
+        fontWeight = FontWeight.Light,
+        lineHeight = 117.sp,
+        letterSpacing = (-1.5).sp
+    ),
+    h2 = TextStyle(
+        fontFamily = montserrat,
+        fontSize = 60.sp,
+        fontWeight = FontWeight.Light,
+        lineHeight = 73.sp,
+        letterSpacing = (-0.5).sp
+    ),
+    h3 = TextStyle(
+        fontFamily = montserrat,
+        fontSize = 48.sp,
+        fontWeight = FontWeight.SemiBold,
+        lineHeight = 68.sp,
+        letterSpacing = 2.sp
+    ),
+    h4 = TextStyle(
+        fontFamily = montserrat,
+        fontSize = 30.sp,
+        fontWeight = FontWeight.SemiBold,
+        lineHeight = 37.sp
+    ),
+    h5 = TextStyle(
+        fontFamily = montserrat,
+        fontSize = 24.sp,
+        fontWeight = FontWeight.SemiBold,
+        lineHeight = 29.sp
+    ),
+    h6 = TextStyle(
+        fontFamily = montserrat,
+        fontSize = 20.sp,
+        fontWeight = FontWeight.SemiBold,
+        lineHeight = 24.sp
+    ),
+    subtitle1 = TextStyle(
+        fontFamily = montserrat,
+        fontSize = 16.sp,
+        fontWeight = FontWeight.SemiBold,
+        lineHeight = 24.sp,
+        letterSpacing = 0.15.sp
+    ),
+    subtitle2 = TextStyle(
+        fontFamily = karla,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Bold,
+        lineHeight = 24.sp,
+        letterSpacing = 0.1.sp
+    ),
     body1 = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = karla,
+        fontSize = 16.sp,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
-    )
-        /* Other default text styles to override
+        lineHeight = 28.sp,
+        letterSpacing = 0.15.sp
+    ),
+    body2 = TextStyle(
+        fontFamily = montserrat,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Medium,
+        lineHeight = 20.sp,
+        letterSpacing = 0.25.sp
+    ),
     button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W500,
-        fontSize = 14.sp
+        fontFamily = montserrat,
+        fontSize = 16.sp,
+        fontWeight = FontWeight.SemiBold,
+        lineHeight = 18.sp,
+        letterSpacing = 1.25.sp
     ),
     caption = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
+        fontFamily = karla,
+        fontSize = 12.sp,
+        fontWeight = FontWeight.Bold,
+        lineHeight = 16.sp,
+        letterSpacing = 0.4.sp
+    ),
+    overline = TextStyle(
+        fontFamily = montserrat,
+        fontSize = 12.sp,
+        fontWeight = FontWeight.SemiBold,
+        lineHeight = 16.sp,
+        letterSpacing = 1.sp
     )
-    */
 )

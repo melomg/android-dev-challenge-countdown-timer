@@ -13,11 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge.ui.timer
 
-import androidx.compose.ui.graphics.Color
+import android.os.CountDownTimer
 
-val blue200 = Color(0xFF8AB4F8)
-val blue500 = Color(0xFF5785C5)
-val blue700 = Color(0xFF000051)
-val teal200 = Color(0xFFF8CE8a)
+private const val UPDATE_INTERVAL_MILLIS = 1_000L
+
+internal class OneSecondCountdownTimer(
+    startTimeInMillis: Long,
+    val updateTime: (Long) -> Unit,
+    val finishTime: () -> Unit,
+) : CountDownTimer(startTimeInMillis, UPDATE_INTERVAL_MILLIS) {
+
+    override fun onTick(millisUntilFinished: Long) {
+        updateTime(millisUntilFinished)
+    }
+
+    override fun onFinish() {
+        finishTime()
+    }
+}
