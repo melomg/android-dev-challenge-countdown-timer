@@ -15,9 +15,9 @@
  */
 package com.example.androiddevchallenge.mapper
 
-import com.example.androiddevchallenge.TimeHolder
+import com.example.androiddevchallenge.timer.TimeUIModel
 
-internal fun toTimeHolder(startTimeInMillis: Long): TimeHolder {
+internal fun toTimeHolder(startTimeInMillis: Long): TimeUIModel {
     val remainingSeconds = startTimeInMillis / 1000
     var seconds = 0
     var minutes = 0
@@ -30,7 +30,7 @@ internal fun toTimeHolder(startTimeInMillis: Long): TimeHolder {
         hours = (secondsDay / 3600).toInt()
     }
 
-    return TimeHolder(
+    return TimeUIModel(
         formatTime(hours),
         formatTime(minutes),
         formatTime(seconds)
