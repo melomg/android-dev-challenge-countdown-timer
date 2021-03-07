@@ -15,6 +15,9 @@
  */
 package com.example.androiddevchallenge.timer.ui
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -44,9 +47,8 @@ import com.example.androiddevchallenge.timer.INITIAL_START_MILLIS
 import com.example.androiddevchallenge.timer.mapper.toTimeHolder
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.typography
-import kotlin.time.ExperimentalTime
 
-@OptIn(ExperimentalTime::class)
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun CountdownTimerView(
     startTimeInMillis: Long,
@@ -155,18 +157,20 @@ fun CountdownTimerView(
                 }
             }
 
-            if (shouldShowReset) {
+            AnimatedVisibility(
+                visible = shouldShowReset,
+                exit = fadeOut(),
+                modifier = Modifier
+                    .constrainAs(countdownTimerReset) {
+                        start.linkTo(countdownStatesButton.end)
+                        end.linkTo(parent.end)
+                        top.linkTo(countdownStatesButton.top)
+                        bottom.linkTo(countdownStatesButton.bottom)
+                    }) {
                 TextButton(
                     onClick = {
                         onTimerReset()
                     },
-                    modifier = Modifier
-                        .constrainAs(countdownTimerReset) {
-                            start.linkTo(countdownStatesButton.end)
-                            end.linkTo(parent.end)
-                            top.linkTo(countdownStatesButton.top)
-                            bottom.linkTo(countdownStatesButton.bottom)
-                        }
                 ) {
                     Text(
                         text = stringResource(R.string.reset),
